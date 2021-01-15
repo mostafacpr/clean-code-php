@@ -1,42 +1,42 @@
-# Clean Code PHP
+# Clean Code در PHP
 
-## Table of Contents
+## فهرست 
 
-  1. [Introduction](#introduction)
-  2. [Variables](#variables)
-     * [Use meaningful and pronounceable variable names](#use-meaningful-and-pronounceable-variable-names)
-     * [Use the same vocabulary for the same type of variable](#use-the-same-vocabulary-for-the-same-type-of-variable)
-     * [Use searchable names (part 1)](#use-searchable-names-part-1)
-     * [Use searchable names (part 2)](#use-searchable-names-part-2)
-     * [Use explanatory variables](#use-explanatory-variables)
-     * [Avoid nesting too deeply and return early (part 1)](#avoid-nesting-too-deeply-and-return-early-part-1)
-     * [Avoid nesting too deeply and return early (part 2)](#avoid-nesting-too-deeply-and-return-early-part-2)
-     * [Avoid Mental Mapping](#avoid-mental-mapping)
-     * [Don't add unneeded context](#dont-add-unneeded-context)
-     * [Use default arguments instead of short circuiting or conditionals](#use-default-arguments-instead-of-short-circuiting-or-conditionals)
-  3. [Comparison](#comparison)
-     * [Use identical comparison](#use-identical-comparison)
-     * [Null coalescing operator](#null-coalescing-operator)
-  4. [Functions](#functions)
-     * [Function arguments (2 or fewer ideally)](#function-arguments-2-or-fewer-ideally)
-     * [Function names should say what they do](#function-names-should-say-what-they-do)
-     * [Functions should only be one level of abstraction](#functions-should-only-be-one-level-of-abstraction)
-     * [Don't use flags as function parameters](#dont-use-flags-as-function-parameters)
-     * [Avoid Side Effects](#avoid-side-effects)
-     * [Don't write to global functions](#dont-write-to-global-functions)
-     * [Don't use a Singleton pattern](#dont-use-a-singleton-pattern)
-     * [Encapsulate conditionals](#encapsulate-conditionals)
-     * [Avoid negative conditionals](#avoid-negative-conditionals)
-     * [Avoid conditionals](#avoid-conditionals)
-     * [Avoid type-checking (part 1)](#avoid-type-checking-part-1)
-     * [Avoid type-checking (part 2)](#avoid-type-checking-part-2)
-     * [Remove dead code](#remove-dead-code)
-  5. [Objects and Data Structures](#objects-and-data-structures)
-     * [Use object encapsulation](#use-object-encapsulation)
-     * [Make objects have private/protected members](#make-objects-have-privateprotected-members)
-  6. [Classes](#classes)
-     * [Prefer composition over inheritance](#prefer-composition-over-inheritance)
-     * [Avoid fluent interfaces](#avoid-fluent-interfaces)
+  1. [مقدمه](#introduction)
+  2. [متغیرها](#variables)
+     * [از نام های متغیر معنی دار و قابل تلفظ استفاده کنید](#use-meaningful-and-pronounceable-variable-names)
+     * [از همان واژگان برای همان نوع متغیر استفاده کنید](#use-the-same-vocabulary-for-the-same-type-of-variable)
+     * [از نام های قابل جستجو استفاده کنید (بخش 1)](#use-searchable-names-part-1)
+     * [از نام های قابل جستجو استفاده کنید (بخش 2)](#use-searchable-names-part-2)
+     * [از متغیرهای توضیحی استفاده کنید](#use-explanatory-variables)
+     * [خودداری از ساختارهای تودرتو (بخش 1)](#avoid-nesting-too-deeply-and-return-early-part-1)
+     * [خودداری از ساختارهای تودرتو (بخش 2)](#avoid-nesting-too-deeply-and-return-early-part-2)
+     * [از نگاشت ذهنی خودداری کنید](#avoid-mental-mapping)
+     * [نیاز به تکرار نام شی در متغیرها نیست](#dont-add-unneeded-context)
+     * [از آرگومان های پیش فرض به جای اتصال کوتاه یا شرطی استفاده کنید](#use-default-arguments-instead-of-short-circuiting-or-conditionals)
+  3. [ساختارهای مقایسه ای](#comparison)
+     * [از مقایسه با نوع یکسان استفاده کنید](#use-identical-comparison)
+     * [اپراتورهای اتصال NULL](#null-coalescing-operator)
+  4. [توابع](#functions)
+     * [آرگومان های توابع (حالت ایده آل 2 آرگومان یا کمتر)](#function-arguments-2-or-fewer-ideally)
+     * [نام تابع باید بگوید که چه کاری انجام می دهد](#function-names-should-say-what-they-do)
+     * [توابع فقط باید شامل یک سطح انتزاع باشند](#functions-should-only-be-one-level-of-abstraction)
+     * [از flagها به عنوان پارامترهای توابع استفاده نکنید](#dont-use-flags-as-function-parameters)
+     * [از عوارض جانبی یا Side Effects خودداری کنید](#avoid-side-effects)
+     * [از نوشتن توابع عمومی جلوگیری کنید](#dont-write-to-global-functions)
+     * [از Singleton pattern استفاده نکنید](#dont-use-a-singleton-pattern)
+     * [دستورات شرطی را کپسوله سازی کنید](#encapsulate-conditionals)
+     * [از استفاده ی شروط منفی جلوگیری کنید](#avoid-negative-conditionals)
+     * [از شرطی شدن اجتناب کنید](#avoid-conditionals)
+     * [از بررسی نوع خودداری کنید (بخش 1)](#avoid-type-checking-part-1)
+     * [از بررسی نوع خودداری کنید (بخش 2)](#avoid-type-checking-part-2)
+     * [حذف کد مرده](#remove-dead-code)
+  5. [اشیا و ساختارهای داده](#objects-and-data-structures)
+     * [استفاده از کپسوله سازی اشیا](#use-object-encapsulation)
+     * [اعضای اشیا را با public, protected, private تعریف کنید](#make-objects-have-privateprotected-members)
+  6. [کلاس ها](#classes)
+     * [ترکیب را بر ارث بری ترجیح دهید](#prefer-composition-over-inheritance)
+     * [از استفاده ی fluent interfaces خودکاری کنید](#avoid-fluent-interfaces)
      * [Prefer final classes](#prefer-final-classes)
   7. [SOLID](#solid)
      * [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
@@ -44,29 +44,24 @@
      * [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
      * [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
      * [Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
-  8. [Don’t repeat yourself (DRY)](#dont-repeat-yourself-dry)
-  9. [Translations](#translations)
+  8. [اصل DRY](#dont-repeat-yourself-dry)
+  9. [ترجمه ها](#translations)
 
-## Introduction
+## مقدمه
 
-Software engineering principles, from Robert C. Martin's book
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for PHP. This is not a style guide. It's a guide to producing
-readable, reusable, and refactorable software in PHP.
+اصول مهندسی نرم افزار ، از کتاب Robert Code Martin [*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) ، اقتباس گرفته شده است تا در این نوشته اصول آن برای زبان برنامه نویسی PHP را بررسی کنیم. این یک راهنمای ساده نیست. این یک راهنما برای تولید نرم افزارهای قابل خواندن با خوانایی بالا، قابل استفاده مجدد در زبان برنامه نویسی پی اچ پی است.
 
-Not every principle herein has to be strictly followed, and even fewer will be universally
-agreed upon. These are guidelines and nothing more, but they are ones codified over many
-years of collective experience by the authors of *Clean Code*.
+لازم نیست که هر اصلی که گفته شد دقیقاً رعایت شود، و حتی تعداد کمتر مورد توافق همه توسعه دهدگان قرار خواهند گرفت. اینها رهنمودهایی هستند و چیز دیگری فراتر از این نیستند ، اما مواردی هستند که در طول چندین سال تجربه جمعی توسط نویسندگان Clean Code نوشته شده است.
 
 Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript).
 
-Although many developers still use PHP 5, most of the examples in this article only work with PHP 7.1+.
+اگرچه بسیاری از توسعه دهندگان هنوز از PHP 5 استفاده می کنند ، اما بیشتر نمونه های این مقاله فقط با PHP 7.1+ کار می کنند.
 
-## Variables
+## متغیرها
 
-### Use meaningful and pronounceable variable names
+### از نام های متغیر معنی دار و قابل تلفظ استفاده کنید:
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -74,7 +69,7 @@ declare(strict_types=1);
 $ymdstr = $moment->format('y-m-d');
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -82,11 +77,11 @@ declare(strict_types=1);
 $currentDate = $moment->format('y-m-d');
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### از همان واژگان برای همان نوع متغیر استفاده کنید:
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -97,7 +92,7 @@ getUserRecord();
 getUserProfile();
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -105,16 +100,13 @@ declare(strict_types=1);
 getUser();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use searchable names (part 1)
+### از نام های قابل جستجو استفاده کنید (بخش 1)
 
-We will read more code than we will ever write. It's important that the code we do write is
-readable and searchable. By *not* naming variables that end up being meaningful for
-understanding our program, we hurt our readers.
-Make your names searchable.
+ما بیشتر از آنچه را که می نویسیم کدها را می خوانیم. مهم است که کدی که می نویسیم قابل خواندن و قابل جستجو باشد. با انتخاب نام برای متغیرهایی که در نهایت برای درک برنامه ما معنی دار تر هستند کدهای خود را ساده تر می کنیم. نام های متغیرهای خود را در برنامه ی مورد نظرتان قابل جستجو انتخاب کنید.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -123,7 +115,7 @@ declare(strict_types=1);
 $result = $serializer->serialize($data, 448);
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -131,9 +123,9 @@ declare(strict_types=1);
 $json = $serializer->serialize($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ```
 
-### Use searchable names (part 2)
+### از نام های قابل جستجو استفاده کنید (بخش 2)
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -153,7 +145,7 @@ if ($user->access & 4) {
 $user->access ^= 2;
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -180,11 +172,11 @@ if ($user->access & User::ACCESS_UPDATE) {
 $user->access ^= User::ACCESS_CREATE;
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use explanatory variables
+### از متغیرهای توضیحی استفاده کنید
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -196,9 +188,9 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($matches[1], $matches[2]);
 ```
 
-**Not bad:**
+**بدک نیست:**
 
-It's better, but we are still heavily dependent on regex.
+این حالت از حالت بالایی بهتر است، اما هنوز به شدت به regex وابسته هستیم.
 
 ```php
 declare(strict_types=1);
@@ -211,9 +203,9 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($city, $zipCode);
 ```
 
-**Good:**
+**خوب:**
 
-Decrease dependence on regex by naming subpatterns.
+با نامگذاری الگوهای فرعی وابستگی به regex را کاهش می دهیم.
 
 ```php
 declare(strict_types=1);
@@ -225,14 +217,13 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($matches['city'], $matches['zipCode']);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid nesting too deeply and return early (part 1)
+### خودداری از ساختارهای تودرتو (بخش 1)
 
-Too many if-else statements can make your code hard to follow. Explicit is better
-than implicit.
+با if-else های زیاد و طولانی و تو در تو خواندن کد شما دشوار می شود. برای این کار از متغیرهای صریح استفاده کنید.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -257,7 +248,7 @@ function isShopOpen($day): bool
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -274,11 +265,11 @@ function isShopOpen(string $day): bool
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid nesting too deeply and return early (part 2)
+### خودداری از ساختارهای تودرتو (بخش 2)
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -298,7 +289,7 @@ function fibonacci(int $n)
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -317,14 +308,14 @@ function fibonacci(int $n): int
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid Mental Mapping
+### از نگاشت ذهنی خودداری کنید
 
 Don’t force the reader of your code to translate what the variable means.
 Explicit is better than implicit.
 
-**Bad:**
+**بد:**
 
 ```php
 $l = ['Austin', 'New York', 'San Francisco'];
@@ -341,7 +332,7 @@ for ($i = 0; $i < count($l); $i++) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -358,14 +349,13 @@ foreach ($locations as $location) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Don't add unneeded context
+### نیاز به تکرار نام شی در متغیرها نیست
 
-If your class/object name tells you something, don't repeat that in your
-variable name.
+برای نام گذاری اعضای یک کلاس نیاز به استفاده از نام کلاس در نام آن ها نیست.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -382,7 +372,7 @@ class Car
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -399,13 +389,13 @@ class Car
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### از آرگومان های پیش فرض به جای اتصال کوتاه یا شرطی استفاده کنید
 
-**Not good:**
+**خیلی خوب نیست:**
 
-This is not good because `$breweryName` can be `NULL`.
+استفاده از `$breweryName` مناسب نیست زیرا می تواند `NULL` باشد.
 
 ```php
 function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
@@ -414,9 +404,9 @@ function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
 }
 ```
 
-**Not bad:**
+**بدک نیست:**
 
-This opinion is more understandable than the previous version, but it better controls the value of the variable.
+این حالت بهتر از حالت قبلی است زیرا قابل درک تر است اما ارزش متغیر را نیز می توان بهتر کنترل کرد.
 
 ```php
 function createMicrobrewery($name = null): void
@@ -426,9 +416,9 @@ function createMicrobrewery($name = null): void
 }
 ```
 
-**Good:**
+**خوب:**
 
- You can use [type hinting](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) and be sure that the `$breweryName` will not be `NULL`.
+می توانید از [type hinting](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) استفاده کنید و مطمئن باشید که مقدار `$breweryName` برابر `NULL` نخواهد بود.
 
 ```php
 function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
@@ -437,15 +427,15 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-## Comparison
+## ساختارهای مقایسه ای
 
-### Use [identical comparison](http://php.net/manual/en/language.operators.comparison.php)
+### از مقایسه با نوع یکسان استفاده کنید - [identical comparison](http://php.net/manual/en/language.operators.comparison.php)
 
-**Not good:**
+**خیلی خوب نیست:**
 
-The simple comparison will convert the string in an integer.
+در مقایسه ی ساده رشته ها و اعداد رشته به صورت یکسان در نظر گرفته می شود.
 
 ```php
 declare(strict_types=1);
@@ -458,12 +448,12 @@ if ($a != $b) {
 }
 ```
 
-The comparison `$a != $b` returns `FALSE` but in fact it's `TRUE`!
-The string `42` is different than the integer `42`.
+مقایسه متغیر a و b برابر `FALSE` است اما در واقع `TRUE` است! رشته 42 با عدد 42 متفاوت است.
 
-**Good:**
 
-The identical comparison will compare type and value.
+**خوب:**
+
+در این حالت مقایسه هم با نوع متغیر و هم با مقدار آن انجام می شود.
 
 ```php
 declare(strict_types=1);
@@ -476,15 +466,15 @@ if ($a !== $b) {
 }
 ```
 
-The comparison `$a !== $b` returns `TRUE`.
+مقایسه ی a با b در کد بالا برابر `TRUE` خواهد شد.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Null coalescing operator
+### اپراتورهای اتصال NULL
 
-Null coalescing is a new operator [introduced in PHP 7](https://www.php.net/manual/en/migration70.new-features.php). The null coalescing operator `??` has been added as syntactic sugar for the common case of needing to use a ternary in conjunction with `isset()`. It returns its first operand if it exists and is not `null`; otherwise it returns its second operand.
+null coalescing عملگر جدیدی است که در [introduced in PHP 7](https://www.php.net/manual/en/migration70.new-features.php) معرفی شده است. null coalescing را با علامت `??` می نویسیم که اگر درست باشد عملوند اول خود را برمی گرداند در غیر اینصورت عملوند دوم خود را بر می گرداند؛ به طور کلی به جای `isset` استفاده می شود.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -498,29 +488,26 @@ if (isset($_GET['name'])) {
 }
 ```
 
-**Good:**
+**خوب:**
 ```php
 declare(strict_types=1);
 
 $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-## Functions
+## توابع
 
-### Function arguments (2 or fewer ideally)
+### آرگومان های توابع (حالت ایده آل 2 آرگومان یا کمتر)
 
-Limiting the amount of function parameters is incredibly important because it makes
-testing your function easier. Having more than three leads to a combinatorial explosion
-where you have to test tons of different cases with each separate argument.
+محدود کردن مقدار پارامترهای توابع بسیار مهم است زیرا تست عملکرد کدهای شما آسان تر می شود. داشتن بیش از سه مورد منجر به سختی در عملیات تست و ردگیری خطا می شود.
 
-Zero arguments is the ideal case. One or two arguments is ok, and three should be avoided.
-Anything more than that should be consolidated. Usually, if you have more than two
-arguments then your function is trying to do too much. In cases where it's not, most
-of the time a higher-level object will suffice as an argument.
+تعداد صفر ایده آل است؛ بین یک تا دو خوب است؛ بیش از سه مناسب نیست.
 
-**Bad:**
+اگر بیش از سه آرگومان دارید احتمالا چند کار را در یک کار انجام می دهید که نباید اینگونه باشد و احتمالا استدلال شما از یک شی نادرست است.
+
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -542,7 +529,7 @@ class Questionnaire
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -607,11 +594,11 @@ class Questionnaire
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Function names should say what they do
+### نام تابع باید بگوید که چه کاری انجام می دهد
 
-**Bad:**
+**بد:**
 
 ```php
 class Email
@@ -629,7 +616,7 @@ $message = new Email(...);
 $message->handle();
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 class Email
@@ -647,15 +634,13 @@ $message = new Email(...);
 $message->send();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### توابع فقط باید شامل یک سطح انتزاع باشند
 
-When you have more than one level of abstraction your function is usually
-doing too much. Splitting up functions leads to reusability and easier
-testing.
+وقتی بیش از یک سطح انتزاع داشته باشید ، عملکرد شما معمولاً پیچیده تر می شود؛ تقسیم توابع منجر به استفاده مجدد و تست آسان تر می شود.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -685,9 +670,7 @@ function parseBetterPHPAlternative(string $code): void
 }
 ```
 
-**Bad too:**
-
-We have carried out some of the functionality, but the `parseBetterPHPAlternative()` function is still very complex and not testable.
+**خیلی بد نیست:**
 
 ```php
 function tokenize(string $code): array
@@ -727,9 +710,9 @@ function parseBetterPHPAlternative(string $code): void
 }
 ```
 
-**Good:**
+**خوب:**
 
-The best solution is move out the dependencies of `parseBetterPHPAlternative()` function.
+بهترین راه حل ، حذف وابستگی های تابع `parseBetterPHPAlternative()` است.
 
 ```php
 class Tokenizer
@@ -787,15 +770,13 @@ class BetterPHPAlternative
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Don't use flags as function parameters
+### از flagها به عنوان پارامترهای توابع استفاده نکنید
 
-Flags tell your user that this function does more than one thing. Functions should
-do one thing. Split out your functions if they are following different code paths
-based on a boolean.
+flagها به کاربر شما می گویند که این تابع بیش از یک کار انجام می دهد. توابع باید یک کار انجام دهند. اگر توابع شما براساس کدهای boolean دنبال می شوند، توابع خود را تجزیه کنید.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -810,7 +791,7 @@ function createFile(string $name, bool $temp = false): void
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -826,25 +807,13 @@ function createTempFile(string $name): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid Side Effects
+### از عوارض جانبی یا Side Effects خودداری کنید
 
-A function produces a side effect if it does anything other than take a value in and
-return another value or values. A side effect could be writing to a file, modifying
-some global variable, or accidentally wiring all your money to a stranger.
+به جای اینکه مقدار یک تابع در یک متغیر global نوشته شود به صورت غیر void آنرا تعریف کنید و مقدار را برگردانید.
 
-Now, you do need to have side effects in a program on occasion. Like the previous
-example, you might need to write to a file. What you want to do is to centralize where
-you are doing this. Don't have several functions and classes that write to a particular
-file. Have one service that does it. One and only one.
-
-The main point is to avoid common pitfalls like sharing state between objects without
-any structure, using mutable data types that can be written to by anything, and not
-centralizing where your side effects occur. If you can do this, you will be happier
-than the vast majority of other programmers.
-
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -866,7 +835,7 @@ var_dump($name);
 // ['Ryan', 'McDermott'];
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -886,17 +855,15 @@ var_dump($newName);
 // ['Ryan', 'McDermott'];
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Don't write to global functions
+### از نوشتن توابع عمومی جلوگیری کنید.
 
-Polluting globals is a bad practice in many languages because you could clash with another
-library and the user of your API would be none-the-wiser until they get an exception in
-production. Let's think about an example: what if you wanted to have configuration array?
-You could write global function like `config()`, but it could clash with another library
-that tried to do the same thing.
+مفهوم Polluting globals یک عمل بد در بسیاری از زبان های برنامه نویسی می باشد چون شما می توانید با یک کتابخانه یا API دیگری این کار را انجام دهید.
 
-**Bad:**
+برای مثال: اگر بخواهید یک آرایه ی configuration بسازید چه می کنید؟ شما می توانید یک تابع عمومی `config()` بنویسید یا با یک کتابخانه ی دیگر این کار را انجام دهید.
+
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -909,7 +876,7 @@ function config(): array
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -943,9 +910,9 @@ $configuration = new Configuration([
 
 And now you must use instance of `Configuration` in your application.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Don't use a Singleton pattern
+### از Singleton pattern استفاده نکنید
 
 Singleton is an [anti-pattern](https://en.wikipedia.org/wiki/Singleton_pattern). Paraphrased from Brian Button:
  1. They are generally used as a **global instance**, why is that so bad? Because **you hide the dependencies** of your application in your code, instead of exposing them through the interfaces. Making something global to avoid passing it around is a [code smell](https://en.wikipedia.org/wiki/Code_smell).
@@ -955,7 +922,7 @@ Singleton is an [anti-pattern](https://en.wikipedia.org/wiki/Singleton_pattern).
 
 There is also very good thoughts by [Misko Hevery](http://misko.hevery.com/about/) about the [root of problem](http://misko.hevery.com/2008/08/25/root-cause-of-singletons/).
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -984,7 +951,7 @@ class DBConnection
 $singleton = DBConnection::getInstance();
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1000,7 +967,8 @@ class DBConnection
 }
 ```
 
-Create instance of `DBConnection` class and configure it with [DSN](http://php.net/manual/en/pdo.construct.php#refsect1-pdo.construct-parameters).
+نمونه ای از کلاس DBConnection ایجاد کرده و آن را با [DSN](http://php.net/manual/en/pdo.construct.php#refsect1-pdo.construct-parameters) پیکربندی کنید.
+
 
 ```php
 declare(strict_types=1);
@@ -1008,13 +976,13 @@ declare(strict_types=1);
 $connection = new DBConnection($dsn);
 ```
 
-And now you must use instance of `DBConnection` in your application.
+و اکنون باید از نمونه `DBConnection` در برنامه خود استفاده کنید.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Encapsulate conditionals
+### دستورات شرطی را کپسوله سازی کنید
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1024,7 +992,7 @@ if ($article->state === 'published') {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1034,11 +1002,11 @@ if ($article->isPublished()) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid negative conditionals
+### از استفاده ی شروط منفی جلوگیری کنید
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1053,7 +1021,7 @@ if (! isDOMNodeNotPresent($node)) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1068,20 +1036,13 @@ if (isDOMNodePresent($node)) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid conditionals
+### از شرطی شدن اجتناب کنید
 
-This seems like an impossible task. Upon first hearing this, most people say,
-"how am I supposed to do anything without an `if` statement?" The answer is that
-you can use polymorphism to achieve the same task in many cases. The second
-question is usually, "well that's great but why would I want to do that?" The
-answer is a previous clean code concept we learned: a function should only do
-one thing. When you have classes and functions that have `if` statements, you
-are telling your user that your function does more than one thing. Remember,
-just do one thing.
+به نظر می رسد این یک کار غیرممکن است. با شنیدن این موضوع احتمالا همه ی برنامه نویسان عزیز می گویند "چگونه قرار است بدون if ، کاری انجام دهیم؟" پاسخ این است که شما می توانید برای رسیدن به همان کار در بسیاری از موارد از چند case استفاده کنید. سوال دوم معمولاً این است ، "خوب این عالی است اما چرا من می خواهم این کار را انجام دهم؟" پاسخ این است که مفهوم قبلی که در ارتباط با clean code خواندیم این است که یک تابع فقط باید یک کار واحد انجام دهد. وقتی کلاس ها و توابعی را دارید که دستور if دارند ، به خواننده ی کد خود می گویید عملکرد این بخش شما بیش از یک کار را انجام می دهد. به یاد داشته باشید ، فقط یک کار را باید انجام دهید.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1104,7 +1065,7 @@ class Airplane
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1147,16 +1108,13 @@ class Cessna implements Airplane
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid type-checking (part 1)
+### از بررسی نوع خودداری کنید (بخش 1)
 
-PHP is untyped, which means your functions can take any type of argument.
-Sometimes you are bitten by this freedom and it becomes tempting to do
-type-checking in your functions. There are many ways to avoid having to do this.
-The first thing to consider is consistent APIs.
+در زبان برنامه نویسی PHP بررسی نوع نداریم اگر برای این موضوع وسواس دارید باید با یک تابع استفاده کنید که بهتر است این کار را انجام ندهید.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1171,7 +1129,7 @@ function travelToTexas($vehicle): void
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1182,21 +1140,15 @@ function travelToTexas(Vehicle $vehicle): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid type-checking (part 2)
+### از بررسی نوع خودداری کنید (بخش 2)
 
-If you are working with basic primitive values like strings, integers, and arrays,
-and you use PHP 7+ and you can't use polymorphism but you still feel the need to
-type-check, you should consider
-[type declaration](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)
-or strict mode. It provides you with static typing on top of standard PHP syntax.
-The problem with manually type-checking is that doing it will require so much
-extra verbiage that the faux "type-safety" you get doesn't make up for the lost
-readability. Keep your PHP clean, write good tests, and have good code reviews.
-Otherwise, do all of that but with PHP strict type declaration or strict mode.
+اگر با مقادیر ابتدایی اولیه مانند رشته ها ، اعداد صحیح و آرایه ها کار می کنید و از PHP 7+ استفاده می کنید و نمی توانید از polymorphism استفاده کنید اما هنوز هم به بررسی نوع نیاز دارید ، باید اعلام نوع یا حالت سخت را در نظر بگیرید. نوع ایستا در بالای نحو استاندارد PHP را برای شما فراهم می کند. مشکلی که در بررسی دستی نوع وجود دارد این است که انجام آن به بخش اضافی نیاز دارد که type-safety ساختگی شما خوانایی از دست رفته را جبران نمی کند.
 
-**Bad:**
+کدهای PHP خود را به صورت Clean Code نگه دارید ، تست های خوبی بنویسید و بررسی های خوبی در مورد کد داشته باشید. در غیر این صورت ، همه این کارها با اعلام نوع دقیق PHP یا حالت دقیق انجام دهید.
+
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1211,7 +1163,7 @@ function combine($val1, $val2): int
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1222,15 +1174,13 @@ function combine(int $val1, int $val2): int
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Remove dead code
+### حذف کد مرده
 
-Dead code is just as bad as duplicate code. There's no reason to keep it in
-your codebase. If it's not being called, get rid of it! It will still be safe
-in your version history if you still need it.
+کد مرده به همان اندازه ای که کد تکراری بد است نامناسب است. هیچ دلیلی وجود ندارد که آن را در کدهای خود نگه دارید. اگر کدی فراخوانی نمی شود، خلاص شوید!
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1249,7 +1199,7 @@ $request = newRequestModule($requestUrl);
 inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1263,15 +1213,14 @@ $request = requestModule($requestUrl);
 inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 
-## Objects and Data Structures
+## اشیا و ساختارهای داده
 
-### Use object encapsulation
+### استفاده از کپسوله سازی اشیا
 
-In PHP you can set `public`, `protected` and `private` keywords for methods.
-Using it, you can control properties modification on an object.
+در PHP می توانید کلمات کلیدی `public`, `protected`, `privaten` داریم که با استفاده از آن ، می توانید دسترسی به ویژگی ها را روی یک اشیا کنترل کنید.
 
 * When you want to do more beyond getting an object property, you don't have
 to look up and change every accessor in your codebase.
@@ -1284,7 +1233,7 @@ server.
 
 Additionally, this is part of [Open/Closed](#openclosed-principle-ocp) principle.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1300,7 +1249,7 @@ $bankAccount = new BankAccount();
 $bankAccount->balance -= 100;
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 class BankAccount
@@ -1341,19 +1290,14 @@ $bankAccount->withdraw($shoesPrice);
 $balance = $bankAccount->getBalance();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Make objects have private/protected members
+### اعضای اشیا را با protected, private تعریف کنید
 
-* `public` methods and properties are most dangerous for changes, because some outside code may easily rely on them and you can't control what code relies on them. **Modifications in class are dangerous for all users of class.**
-* `protected` modifier are as dangerous as public, because they are available in scope of any child class. This effectively means that difference between public and protected is only in access mechanism, but encapsulation guarantee remains the same. **Modifications in class are dangerous for all descendant classes.**
-* `private` modifier guarantees that code is **dangerous to modify only in boundaries of single class** (you are safe for modifications and you won't have [Jenga effect](http://www.urbandictionary.com/define.php?term=Jengaphobia&defid=2494196)).
+برای اطلاعات بیشتر [این نوشته](http://fabien.potencier.org/pragmatism-over-theory-protected-vs-private.html) را از [Fabien Potencier](https://github.com/fabpot) بخوانید.
 
-Therefore, use `private` by default and `public/protected` when you need to provide access for external classes.
 
-For more informations you can read the [blog post](http://fabien.potencier.org/pragmatism-over-theory-protected-vs-private.html) on this topic written by [Fabien Potencier](https://github.com/fabpot).
-
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1373,7 +1317,7 @@ $employee = new Employee('John Doe');
 echo 'Employee name: ' . $employee->name;
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1398,30 +1342,15 @@ $employee = new Employee('John Doe');
 echo 'Employee name: ' . $employee->getName();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-## Classes
+## کلاس ها
 
-### Prefer composition over inheritance
+### ترکیب را بر ارث بری ترجیح دهید
 
-As stated famously in [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) by the Gang of Four,
-you should prefer composition over inheritance where you can. There are lots of
-good reasons to use inheritance and lots of good reasons to use composition.
-The main point for this maxim is that if your mind instinctively goes for
-inheritance, try to think if composition could model your problem better. In some
-cases it can.
+ابتدا بهتر است کمی در ارتباط با [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns)ها بخوانید.
 
-You might be wondering then, "when should I use inheritance?" It
-depends on your problem at hand, but this is a decent list of when inheritance
-makes more sense than composition:
-
-1. Your inheritance represents an "is-a" relationship and not a "has-a"
-relationship (Human->Animal vs. User->UserDetails).
-2. You can reuse code from the base classes (Humans can move like all animals).
-3. You want to make global changes to derived classes by changing a base class.
-(Change the caloric expenditure of all animals when they move).
-
-**Bad:**
+**بد**
 
 ```php
 declare(strict_types=1);
@@ -1462,7 +1391,7 @@ class EmployeeTaxData extends Employee
 }
 ```
 
-**Good:**
+**خوب*
 
 ```php
 declare(strict_types=1);
@@ -1505,13 +1434,11 @@ class Employee
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Avoid fluent interfaces
+### از استفاده ی fluent interfaces خودکاری کنید
 
-A [Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface) is an object
-oriented API that aims to improve the readability of the source code by using
-[Method chaining](https://en.wikipedia.org/wiki/Method_chaining).
+در ارتباط با [Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface) ها بخوانید؛ برای بهتر متوجه شدن این موضوع این نوشته را از Marco Pivetta بخوانید.
 
 While there can be some contexts, frequently builder objects, where this
 pattern reduces the verbosity of the code (for example the [PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
@@ -1523,10 +1450,7 @@ more often it comes at some costs:
 3. Is harder to [mock](https://en.wikipedia.org/wiki/Mock_object) in a test suite.
 4. Makes diffs of commits harder to read.
 
-For more informations you can read the full [blog post](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)
-on this topic written by [Marco Pivetta](https://github.com/Ocramius).
-
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1576,7 +1500,7 @@ $car = (new Car())
     ->dump();
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1617,9 +1541,9 @@ $car->setModel('F-150');
 $car->dump();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Prefer final classes
+### کلاس های final را ترجیح دهید
 
 The `final` should be used whenever possible:
 
@@ -1633,7 +1557,7 @@ The only condition is that your class should implement an interface and no other
 
 For more informations you can read [the blog post](https://ocramius.github.io/blog/when-to-declare-classes-final/) on this topic written by [Marco Pivetta (Ocramius)](https://ocramius.github.io/).
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1657,7 +1581,7 @@ final class Car
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1686,11 +1610,11 @@ final class Car implements Vehicle
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
 ## SOLID
 
-**SOLID** is the mnemonic acronym introduced by Michael Feathers for the first five principles named by Robert Martin, which meant five basic principles of object-oriented programming and design.
+**SOLID** مخففی است که توسط مایکل پرز برای پنج اصل اول به نام رابرت مارتین معرفی شده است، که به معنی پنج اصل اساسی برنامه نویسی و طراحی شی گرا است.
 
  * [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
  * [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
@@ -1698,18 +1622,11 @@ final class Car implements Vehicle
  * [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
  * [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
 
-### Single Responsibility Principle (SRP)
+### Single Responsibility Principle یا SRP
 
-As stated in Clean Code, "There should never be more than one reason for a class
-to change". It's tempting to jam-pack a class with a lot of functionality, like
-when you can only take one suitcase on your flight. The issue with this is
-that your class won't be conceptually cohesive and it will give it many reasons
-to change. Minimizing the amount of times you need to change a class is important.
-It's important because if too much functionality is in one class and you modify a piece of it,
-it can be difficult to understand how that will affect other dependent modules in
-your codebase.
+همانطور که در Clean Code بیان شد ، "هرگز نباید بیش از یک کار برای یک کلاس وجود داشته باشد". بسته بندی کلاس هایی که قابلیت های زیادی دارند ، وسوسه انگیز است ، مانند زمانی که فقط اجازه دارید یک چمدان را در پرواز با خود حمل کنید. مسئله این است که کلاس شما از نظر مفهومی منسجم نخواهد بود و دلایل زیادی برای تغییر در آن ایجاد می کند. به حداقل رساندن تعداد دفعات لازم برای تغییر کلاس مهم است. این مهم است زیرا اگر کارایی بیش از حد در یک کلاس وجود دارد و شما بخشی از آن را اصلاح می کنید ، درک اینکه چگونه این امر بر سایر ماژول های وابسته در کد شما تأثیر می گذارد دشوار است.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1737,7 +1654,7 @@ class UserSettings
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1778,16 +1695,15 @@ class UserSettings
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Open/Closed Principle (OCP)
+### Open/Closed Principle یا OCP
 
-As stated by Bertrand Meyer, "software entities (classes, modules, functions,
-etc.) should be open for extension, but closed for modification." What does that
-mean though? This principle basically states that you should allow users to
-add new functionalities without changing existing code.
+همانطور که برتراند مایر اظهار داشت ، "نهادهای نرم افزاری (کلاسها ، ماژولها ، توابع و ...) باید برای پسوند باز باشند، اما برای اصلاح بسته هستند."
 
-**Bad:**
+این به چه معناست؟ این اصل در اصل بیان می کند که شما باید به افرادی که کد شما را می خوانند اجازه دهید ویژگی های جدید را بدون تغییر کد موجود اضافه کنند.
+
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1854,7 +1770,7 @@ class HttpRequester
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -1896,24 +1812,11 @@ class HttpRequester
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Liskov Substitution Principle (LSP)
+### Liskov Substitution Principle یا LSP
 
-This is a scary term for a very simple concept. It's formally defined as "If S
-is a subtype of T, then objects of type T may be replaced with objects of type S
-(i.e., objects of type S may substitute objects of type T) without altering any
-of the desirable properties of that program (correctness, task performed,
-etc.)." That's an even scarier definition.
-
-The best explanation for this is if you have a parent class and a child class,
-then the base class and child class can be used interchangeably without getting
-incorrect results. This might still be confusing, so let's take a look at the
-classic Square-Rectangle example. Mathematically, a square is a rectangle, but
-if you model it using the "is-a" relationship via inheritance, you quickly
-get into trouble.
-
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -1969,13 +1872,7 @@ foreach ($rectangles as $rectangle) {
 }
 ```
 
-**Good:**
-
-The best way is separate the quadrangles and allocation of a more general subtype for both shapes.
-
-Despite the apparent similarity of the square and the rectangle, they are different.
-A square has much in common with a rhombus, and a rectangle with a parallelogram, but they are not subtype.
-A square, a rectangle, a rhombus and a parallelogram are separate shapes with their own properties, albeit similar.
+**خوب:**
 
 ```php
 interface Shape
@@ -2027,19 +1924,11 @@ foreach ($shapes as $shape) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Interface Segregation Principle (ISP)
+### Interface Segregation Principle یا ISP
 
-ISP states that "Clients should not be forced to depend upon interfaces that
-they do not use."
-
-A good example to look at that demonstrates this principle is for
-classes that require large settings objects. Not requiring clients to set up
-huge amounts of options is beneficial, because most of the time they won't need
-all of the settings. Making them optional helps prevent having a "fat interface".
-
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -2078,9 +1967,9 @@ class RobotEmployee implements Employee
 }
 ```
 
-**Good:**
+**خوب:**
 
-Not every worker is an employee, but every employee is a worker.
+هر کارگری یک کارمند نیست ، بلکه هر کارمندی یک کارگر است.
 
 ```php
 declare(strict_types=1);
@@ -2122,24 +2011,15 @@ class RobotEmployee implements Workable
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-### Dependency Inversion Principle (DIP)
+### Dependency Inversion Principle یا DIP
 
-This principle states two essential things:
-1. High-level modules should not depend on low-level modules. Both should
-depend on abstractions.
-2. Abstractions should not depend upon details. Details should depend on
-abstractions.
+این اصل دو چیز اساسی را بیان می کند:
+1. ماژول های سطح بالا نباید به ماژول های سطح پایین وابسته باشند. هر دو باید به Abstractionها بستگی داشته باشند.
+2. Abstractionها نباید به جزئیات بستگی داشته باشد. جزئیات باید به Abstractionها بستگی داشته باشد.
 
-This can be hard to understand at first, but if you've worked with PHP frameworks (like Symfony), you've seen an implementation of this principle in the form of Dependency
-Injection (DI). While they are not identical concepts, DIP keeps high-level
-modules from knowing the details of its low-level modules and setting them up.
-It can accomplish this through DI. A huge benefit of this is that it reduces
-the coupling between modules. Coupling is a very bad development pattern because
-it makes your code hard to refactor.
-
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -2176,7 +2056,7 @@ class Manager
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -2218,34 +2098,21 @@ class Manager
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-## Don’t repeat yourself (DRY)
+## اصل DRY
 
-Try to observe the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) principle.
+کلمه ی DRY مخفف Don’t repeat yourself است. سعی کنید اصل DRY را رعایت کنید.
 
-Do your absolute best to avoid duplicate code. Duplicate code is bad because
-it means that there's more than one place to alter something if you need to
-change some logic.
+تمام تلاش خود را انجام دهید تا از نوشتن کدهای تکراری جلوگیری کنید. کد تکراری بد است زیرا به این معنی است که در صورت نیاز به تغییر منطق در ساختار برنامه، بیش از یک مکان برای تغییر دادن چیزی وجود دارد که باید آن را انجام دهید.
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
+تصور کنید اگر یک رستوران اداره می کنید و موجودی خود را پیگیری می کنید: تمام گوجه فرنگی ، پیاز ، سیر ، ادویه جات و ... را در لیست نوشته باشید. اگر چندین لیست دارید که این مورد را در آن نگه می دارید ، پس هنگام تهیه یک غذا با گوجه فرنگی همه ی لیست ها باید به روز شوند ولی اگر فقط یک لیست موجودی دارید ، فقط یک جا برای به روزرسانی وجود دارد که باید آنرا تغییر دهید!!
 
-Often you have duplicate code because you have two or more slightly
-different things, that share a lot in common, but their differences force you
-to have two or more separate functions that do much of the same things. Removing
-duplicate code means creating an abstraction that can handle this set of different
-things with just one function/module/class.
+اگر غالباً کد تکراری دارید علت آن این است که دو یا چند چیز کمی متفاوت دارید که اشتراکات زیادی با هم دارند، اما تفاوت آن ها شما را مجبور می کند که دو یا چند عملکرد جداگانه برای آن ها داشته باشید که بیشتر کارهای مشابه را انجام می دهند. حذف کد تکراری به معنای ایجاد انتزاعی است که می تواند مجموعه ای از موارد مختلف را فقط با یک تابع / ماژول / کلاس مدیریت کند.
 
-Getting the abstraction right is critical, that's why you should follow the
-SOLID principles laid out in the [Classes](#classes) section. Bad abstractions can be
-worse than duplicate code, so be careful! Having said this, if you can make
-a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places any time you want to change one thing.
+درست گرفتن انتزاع بسیار مهم است، به همین دلیل باید از اصول SOLID مندرج در بخش Class ها پیروی کنید. انتزاعات بد ممکن است از کد تکراری بدتر باشد، بنابراین مراقب باشید! با گفتن این، اگر می توانید انتزاع خوبی انجام دهید، آن را انجام دهید! کدتان را مجددا تکرار نکنید، در غیر این صورت هر زمان که بخواهید یک چیز را تغییر دهید باید بخش های مختلفی را ویرایش کنید.
 
-**Bad:**
+**بد:**
 
 ```php
 declare(strict_types=1);
@@ -2275,7 +2142,7 @@ function showManagerList(array $managers): void
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```php
 declare(strict_types=1);
@@ -2293,9 +2160,9 @@ function showList(array $employees): void
 }
 ```
 
-**Very good:**
+**عالی:**
 
-It is better to use a compact version of the code.
+بهتر است از نسخه فشرده کد استفاده کنید.
 
 ```php
 declare(strict_types=1);
@@ -2308,30 +2175,32 @@ function showList(array $employees): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
 
-## Translations
+## ترجمه ها
 
-This is also available in other languages:
+ترجمه های این داکیومنت به زبان های دیگر:
 
-* :cn: **Chinese:**
+* :cn: **چینی:**
    * [php-cpm/clean-code-php](https://github.com/php-cpm/clean-code-php)
-* :ru: **Russian:**
+* :ru: **روسی:**
    * [peter-gribanov/clean-code-php](https://github.com/peter-gribanov/clean-code-php)
-* :es: **Spanish:**
+* :es: **اسپانیایی:**
    * [fikoborquez/clean-code-php](https://github.com/fikoborquez/clean-code-php)
-* :brazil: **Portuguese:**
+* :brazil: **پرتغالی:**
    * [fabioars/clean-code-php](https://github.com/fabioars/clean-code-php)
    * [jeanjar/clean-code-php](https://github.com/jeanjar/clean-code-php/tree/pt-br)
-* :thailand: **Thai:**
+* :thailand: **تایلندی:**
    * [panuwizzle/clean-code-php](https://github.com/panuwizzle/clean-code-php)
-* :fr: **French:**
+* :fr: **فرانسوی:**
    * [errorname/clean-code-php](https://github.com/errorname/clean-code-php)
-* :vietnam: **Vietnamese**
+* :vietnam: **ویتنامی**
    * [viethuongdev/clean-code-php](https://github.com/viethuongdev/clean-code-php)
-* :kr: **Korean:**
+* :kr: **کره ای:**
    * [yujineeee/clean-code-php](https://github.com/yujineeee/clean-code-php)
-* :tr: **Turkish:**
+* :tr: **ترکی:**
    * [anilozmen/clean-code-php](https://github.com/anilozmen/clean-code-php)
+* :fa: **فارسی:**
+   * [amirshnll/clean-code-php](https://github.com/amirshnll/clean-code-php)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ برگشت به بالا](#table-of-contents)**
