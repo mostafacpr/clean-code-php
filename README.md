@@ -1,3 +1,4 @@
+<div dir="rtl">
 # Clean Code در PHP
 
 ## فهرست 
@@ -2204,3 +2205,5 @@ function showList(array $employees): void
    * [amirshnll/clean-code-php](https://github.com/amirshnll/clean-code-php)
 
 **[⬆ برگشت به بالا](#table-of-contents)**
+
+</div>
