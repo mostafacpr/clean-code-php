@@ -1686,11 +1686,15 @@ class Employee
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از استفاده ی fluent interfaces خودکاری کنید
 
 در ارتباط با [Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface) ها بخوانید؛ برای بهتر متوجه شدن این موضوع این نوشته را از Marco Pivetta بخوانید.
+
+</div>
 
 While there can be some contexts, frequently builder objects, where this
 pattern reduces the verbosity of the code (for example the [PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
@@ -1702,7 +1706,11 @@ more often it comes at some costs:
 3. Is harder to [mock](https://en.wikipedia.org/wiki/Mock_object) in a test suite.
 4. Makes diffs of commits harder to read.
 
+<div dir="rtl">
+
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1752,7 +1760,11 @@ $car = (new Car())
     ->dump();
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1793,9 +1805,13 @@ $car->setModel('F-150');
 $car->dump();
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### کلاس های final را ترجیح دهید
+
+</div>
 
 The `final` should be used whenever possible:
 
@@ -1809,7 +1825,11 @@ The only condition is that your class should implement an interface and no other
 
 For more informations you can read [the blog post](https://ocramius.github.io/blog/when-to-declare-classes-final/) on this topic written by [Marco Pivetta (Ocramius)](https://ocramius.github.io/).
 
+<div dir="rtl">
+
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1833,7 +1853,11 @@ final class Car
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1862,11 +1886,15 @@ final class Car implements Vehicle
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ## SOLID
 
 **SOLID** مخففی است که توسط مایکل پرز برای پنج اصل اول به نام رابرت مارتین معرفی شده است، که به معنی پنج اصل اساسی برنامه نویسی و طراحی شی گرا است.
+
+</div>
 
  * [S: Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
  * [O: Open/Closed Principle (OCP)](#openclosed-principle-ocp)
@@ -1874,11 +1902,15 @@ final class Car implements Vehicle
  * [I: Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
  * [D: Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
 
+<div dir="rtl">
+
 ### Single Responsibility Principle یا SRP
 
 همانطور که در Clean Code بیان شد ، "هرگز نباید بیش از یک کار برای یک کلاس وجود داشته باشد". بسته بندی کلاس هایی که قابلیت های زیادی دارند ، وسوسه انگیز است ، مانند زمانی که فقط اجازه دارید یک چمدان را در پرواز با خود حمل کنید. مسئله این است که کلاس شما از نظر مفهومی منسجم نخواهد بود و دلایل زیادی برای تغییر در آن ایجاد می کند. به حداقل رساندن تعداد دفعات لازم برای تغییر کلاس مهم است. این مهم است زیرا اگر کارایی بیش از حد در یک کلاس وجود دارد و شما بخشی از آن را اصلاح می کنید ، درک اینکه چگونه این امر بر سایر ماژول های وابسته در کد شما تأثیر می گذارد دشوار است.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1906,7 +1938,11 @@ class UserSettings
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1946,6 +1982,8 @@ class UserSettings
     }
 }
 ```
+<div dir="rtl">
+
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
@@ -1956,6 +1994,8 @@ class UserSettings
 این به چه معناست؟ این اصل در اصل بیان می کند که شما باید به افرادی که کد شما را می خوانند اجازه دهید ویژگی های جدید را بدون تغییر کد موجود اضافه کنند.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2022,7 +2062,11 @@ class HttpRequester
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2064,11 +2108,15 @@ class HttpRequester
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Liskov Substitution Principle یا LSP
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2124,7 +2172,11 @@ foreach ($rectangles as $rectangle) {
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 interface Shape
@@ -2176,11 +2228,15 @@ foreach ($shapes as $shape) {
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Interface Segregation Principle یا ISP
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2219,9 +2275,13 @@ class RobotEmployee implements Employee
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
 
 هر کارگری یک کارمند نیست ، بلکه هر کارمندی یک کارگر است.
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2263,6 +2323,8 @@ class RobotEmployee implements Workable
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### Dependency Inversion Principle یا DIP
@@ -2272,6 +2334,8 @@ class RobotEmployee implements Workable
 2. Abstractionها نباید به جزئیات بستگی داشته باشد. جزئیات باید به Abstractionها بستگی داشته باشد.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2308,7 +2372,11 @@ class Manager
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2350,6 +2418,8 @@ class Manager
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ## اصل DRY
@@ -2365,6 +2435,8 @@ class Manager
 درست گرفتن انتزاع بسیار مهم است، به همین دلیل باید از اصول SOLID مندرج در بخش Class ها پیروی کنید. انتزاعات بد ممکن است از کد تکراری بدتر باشد، بنابراین مراقب باشید! با گفتن این، اگر می توانید انتزاع خوبی انجام دهید، آن را انجام دهید! کدتان را مجددا تکرار نکنید، در غیر این صورت هر زمان که بخواهید یک چیز را تغییر دهید باید بخش های مختلفی را ویرایش کنید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2394,7 +2466,11 @@ function showManagerList(array $managers): void
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2412,9 +2488,13 @@ function showList(array $employees): void
 }
 ```
 
+<div dir="rtl">
+
 **عالی:**
 
 بهتر است از نسخه فشرده کد استفاده کنید.
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -2426,6 +2506,8 @@ function showList(array $employees): void
     }
 }
 ```
+
+<div dir="rtl">
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
