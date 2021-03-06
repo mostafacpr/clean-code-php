@@ -65,13 +65,18 @@ Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-cod
 
 **بد:**
 
+</div>
+
 ```php
 declare(strict_types=1);
 
 $ymdstr = $moment->format('y-m-d');
 ```
+<div dir="rtl">
 
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -79,11 +84,15 @@ declare(strict_types=1);
 $currentDate = $moment->format('y-m-d');
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از همان واژگان برای همان نوع متغیر استفاده کنید:
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -94,13 +103,19 @@ getUserRecord();
 getUserProfile();
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
 
 getUser();
 ```
+
+<div dir="rtl">
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
@@ -110,6 +125,8 @@ getUser();
 
 **بد:**
 
+</div>
+
 ```php
 declare(strict_types=1);
 
@@ -117,7 +134,11 @@ declare(strict_types=1);
 $result = $serializer->serialize($data, 448);
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -125,9 +146,13 @@ declare(strict_types=1);
 $json = $serializer->serialize($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ```
 
+<div dir="rtl">
+
 ### از نام های قابل جستجو استفاده کنید (بخش 2)
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -147,7 +172,11 @@ if ($user->access & 4) {
 $user->access ^= 2;
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -174,11 +203,15 @@ if ($user->access & User::ACCESS_UPDATE) {
 $user->access ^= User::ACCESS_CREATE;
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از متغیرهای توضیحی استفاده کنید
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -190,9 +223,13 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($matches[1], $matches[2]);
 ```
 
+<div dir="rtl">
+
 **بدک نیست:**
 
 این حالت از حالت بالایی بهتر است، اما هنوز به شدت به regex وابسته هستیم.
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -205,9 +242,13 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($city, $zipCode);
 ```
 
+<div dir="rtl">
+
 **خوب:**
 
 با نامگذاری الگوهای فرعی وابستگی به regex را کاهش می دهیم.
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -219,6 +260,8 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($matches['city'], $matches['zipCode']);
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### خودداری از ساختارهای تودرتو (بخش 1)
@@ -226,6 +269,8 @@ saveCityZipCode($matches['city'], $matches['zipCode']);
 با if-else های زیاد و طولانی و تو در تو خواندن کد شما دشوار می شود. برای این کار از متغیرهای صریح استفاده کنید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -250,7 +295,11 @@ function isShopOpen($day): bool
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -267,11 +316,15 @@ function isShopOpen(string $day): bool
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### خودداری از ساختارهای تودرتو (بخش 2)
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -291,7 +344,11 @@ function fibonacci(int $n)
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -310,14 +367,18 @@ function fibonacci(int $n): int
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از نگاشت ذهنی خودداری کنید
 
-Don’t force the reader of your code to translate what the variable means.
-Explicit is better than implicit.
+سعی کنید کاری کنید که کسی که کد شما را می خواند نیاز به ترجمه نداشته باشد و به صورت صریع متوجه شود.
+
 
 **بد:**
+
+</div>
 
 ```php
 $l = ['Austin', 'New York', 'San Francisco'];
@@ -334,7 +395,11 @@ for ($i = 0; $i < count($l); $i++) {
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -351,6 +416,8 @@ foreach ($locations as $location) {
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### نیاز به تکرار نام شی در متغیرها نیست
@@ -358,6 +425,8 @@ foreach ($locations as $location) {
 برای نام گذاری اعضای یک کلاس نیاز به استفاده از نام کلاس در نام آن ها نیست.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -374,7 +443,11 @@ class Car
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -391,6 +464,8 @@ class Car
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از آرگومان های پیش فرض به جای اتصال کوتاه یا شرطی استفاده کنید
@@ -399,6 +474,8 @@ class Car
 
 استفاده از `$breweryName` مناسب نیست زیرا می تواند `NULL` باشد.
 
+</div>
+
 ```php
 function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
 {
@@ -406,9 +483,13 @@ function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
 }
 ```
 
+<div dir="rtl">
+
 **بدک نیست:**
 
 این حالت بهتر از حالت قبلی است زیرا قابل درک تر است اما ارزش متغیر را نیز می توان بهتر کنترل کرد.
+
+</div>
 
 ```php
 function createMicrobrewery($name = null): void
@@ -418,9 +499,13 @@ function createMicrobrewery($name = null): void
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
 
 می توانید از [type hinting](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) استفاده کنید و مطمئن باشید که مقدار `$breweryName` برابر `NULL` نخواهد بود.
+
+</div>
 
 ```php
 function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
@@ -428,6 +513,8 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
     // ...
 }
 ```
+
+<div dir="rtl">
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
@@ -438,6 +525,8 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 **خیلی خوب نیست:**
 
 در مقایسه ی ساده رشته ها و اعداد رشته به صورت یکسان در نظر گرفته می شود.
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -450,12 +539,16 @@ if ($a != $b) {
 }
 ```
 
+<div dir="rtl">
+
 مقایسه متغیر a و b برابر `FALSE` است اما در واقع `TRUE` است! رشته 42 با عدد 42 متفاوت است.
 
 
 **خوب:**
 
 در این حالت مقایسه هم با نوع متغیر و هم با مقدار آن انجام می شود.
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -468,6 +561,8 @@ if ($a !== $b) {
 }
 ```
 
+<div dir="rtl">
+
 مقایسه ی a با b در کد بالا برابر `TRUE` خواهد شد.
 
 **[⬆ برگشت به بالا](#table-of-contents)**
@@ -477,6 +572,8 @@ if ($a !== $b) {
 null coalescing عملگر جدیدی است که در [introduced in PHP 7](https://www.php.net/manual/en/migration70.new-features.php) معرفی شده است. null coalescing را با علامت `??` می نویسیم که اگر درست باشد عملوند اول خود را برمی گرداند در غیر اینصورت عملوند دوم خود را بر می گرداند؛ به طور کلی به جای `isset` استفاده می شود.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -490,12 +587,19 @@ if (isset($_GET['name'])) {
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
+
 ```php
 declare(strict_types=1);
 
 $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 ```
+
+<div dir="rtl">
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
@@ -510,6 +614,8 @@ $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 اگر بیش از سه آرگومان دارید احتمالا چند کار را در یک کار انجام می دهید که نباید اینگونه باشد و احتمالا استدلال شما از یک شی نادرست است.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -531,7 +637,11 @@ class Questionnaire
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -596,11 +706,15 @@ class Questionnaire
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### نام تابع باید بگوید که چه کاری انجام می دهد
 
 **بد:**
+
+</div>
 
 ```php
 class Email
@@ -618,7 +732,11 @@ $message = new Email(...);
 $message->handle();
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 class Email
@@ -636,6 +754,8 @@ $message = new Email(...);
 $message->send();
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### توابع فقط باید شامل یک سطح انتزاع باشند
@@ -643,6 +763,8 @@ $message->send();
 وقتی بیش از یک سطح انتزاع داشته باشید ، عملکرد شما معمولاً پیچیده تر می شود؛ تقسیم توابع منجر به استفاده مجدد و تست آسان تر می شود.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -672,7 +794,11 @@ function parseBetterPHPAlternative(string $code): void
 }
 ```
 
+<div dir="rtl">
+
 **خیلی بد نیست:**
+
+</div>
 
 ```php
 function tokenize(string $code): array
@@ -712,9 +838,13 @@ function parseBetterPHPAlternative(string $code): void
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
 
 بهترین راه حل ، حذف وابستگی های تابع `parseBetterPHPAlternative()` است.
+
+</div>
 
 ```php
 class Tokenizer
@@ -772,6 +902,8 @@ class BetterPHPAlternative
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از flagها به عنوان پارامترهای توابع استفاده نکنید
@@ -779,6 +911,8 @@ class BetterPHPAlternative
 flagها به کاربر شما می گویند که این تابع بیش از یک کار انجام می دهد. توابع باید یک کار انجام دهند. اگر توابع شما براساس کدهای boolean دنبال می شوند، توابع خود را تجزیه کنید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -793,7 +927,11 @@ function createFile(string $name, bool $temp = false): void
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -809,6 +947,8 @@ function createTempFile(string $name): void
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از عوارض جانبی یا Side Effects خودداری کنید
@@ -816,6 +956,8 @@ function createTempFile(string $name): void
 به جای اینکه مقدار یک تابع در یک متغیر global نوشته شود به صورت غیر void آنرا تعریف کنید و مقدار را برگردانید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -837,7 +979,11 @@ var_dump($name);
 // ['Ryan', 'McDermott'];
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -857,6 +1003,8 @@ var_dump($newName);
 // ['Ryan', 'McDermott'];
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از نوشتن توابع عمومی جلوگیری کنید.
@@ -866,6 +1014,8 @@ var_dump($newName);
 برای مثال: اگر بخواهید یک آرایه ی configuration بسازید چه می کنید؟ شما می توانید یک تابع عمومی `config()` بنویسید یا با یک کتابخانه ی دیگر این کار را انجام دهید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -878,7 +1028,11 @@ function config(): array
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -900,7 +1054,11 @@ class Configuration
 }
 ```
 
-Load configuration and create instance of `Configuration` class
+<div dir="rtl">
+
+configuration را بارگیری کنید و نمونه از از کلاس `Configuration` ایجاد کنید
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -910,11 +1068,16 @@ $configuration = new Configuration([
 ]);
 ```
 
-And now you must use instance of `Configuration` in your application.
+<div dir="rtl">
+
+حالا باید یک نمونه از `Configuration` استفاده کنید
+
 
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از Singleton pattern استفاده نکنید
+
+</div>
 
 Singleton is an [anti-pattern](https://en.wikipedia.org/wiki/Singleton_pattern). Paraphrased from Brian Button:
  1. They are generally used as a **global instance**, why is that so bad? Because **you hide the dependencies** of your application in your code, instead of exposing them through the interfaces. Making something global to avoid passing it around is a [code smell](https://en.wikipedia.org/wiki/Code_smell).
@@ -924,7 +1087,11 @@ Singleton is an [anti-pattern](https://en.wikipedia.org/wiki/Singleton_pattern).
 
 There is also very good thoughts by [Misko Hevery](http://misko.hevery.com/about/) about the [root of problem](http://misko.hevery.com/2008/08/25/root-cause-of-singletons/).
 
+<div dir="rtl">
+
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -953,7 +1120,11 @@ class DBConnection
 $singleton = DBConnection::getInstance();
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -969,14 +1140,19 @@ class DBConnection
 }
 ```
 
+<div dir="rtl">
+
 نمونه ای از کلاس DBConnection ایجاد کرده و آن را با [DSN](http://php.net/manual/en/pdo.construct.php#refsect1-pdo.construct-parameters) پیکربندی کنید.
 
+</div>
 
 ```php
 declare(strict_types=1);
 
 $connection = new DBConnection($dsn);
 ```
+
+<div dir="rtl">
 
 و اکنون باید از نمونه `DBConnection` در برنامه خود استفاده کنید.
 
@@ -986,6 +1162,8 @@ $connection = new DBConnection($dsn);
 
 **بد:**
 
+</div>
+
 ```php
 declare(strict_types=1);
 
@@ -994,7 +1172,11 @@ if ($article->state === 'published') {
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1004,11 +1186,15 @@ if ($article->isPublished()) {
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از استفاده ی شروط منفی جلوگیری کنید
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1023,7 +1209,11 @@ if (! isDOMNodeNotPresent($node)) {
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1038,6 +1228,8 @@ if (isDOMNodePresent($node)) {
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از شرطی شدن اجتناب کنید
@@ -1045,6 +1237,8 @@ if (isDOMNodePresent($node)) {
 به نظر می رسد این یک کار غیرممکن است. با شنیدن این موضوع احتمالا همه ی برنامه نویسان عزیز می گویند "چگونه قرار است بدون if ، کاری انجام دهیم؟" پاسخ این است که شما می توانید برای رسیدن به همان کار در بسیاری از موارد از چند case استفاده کنید. سوال دوم معمولاً این است ، "خوب این عالی است اما چرا من می خواهم این کار را انجام دهم؟" پاسخ این است که مفهوم قبلی که در ارتباط با clean code خواندیم این است که یک تابع فقط باید یک کار واحد انجام دهد. وقتی کلاس ها و توابعی را دارید که دستور if دارند ، به خواننده ی کد خود می گویید عملکرد این بخش شما بیش از یک کار را انجام می دهد. به یاد داشته باشید ، فقط یک کار را باید انجام دهید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1067,7 +1261,11 @@ class Airplane
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1110,6 +1308,8 @@ class Cessna implements Airplane
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از بررسی نوع خودداری کنید (بخش 1)
@@ -1117,6 +1317,8 @@ class Cessna implements Airplane
 در زبان برنامه نویسی PHP بررسی نوع نداریم اگر برای این موضوع وسواس دارید باید با یک تابع استفاده کنید که بهتر است این کار را انجام ندهید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1131,7 +1333,11 @@ function travelToTexas($vehicle): void
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1142,6 +1348,8 @@ function travelToTexas(Vehicle $vehicle): void
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### از بررسی نوع خودداری کنید (بخش 2)
@@ -1151,6 +1359,8 @@ function travelToTexas(Vehicle $vehicle): void
 کدهای PHP خود را به صورت Clean Code نگه دارید ، تست های خوبی بنویسید و بررسی های خوبی در مورد کد داشته باشید. در غیر این صورت ، همه این کارها با اعلام نوع دقیق PHP یا حالت دقیق انجام دهید.
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1165,7 +1375,11 @@ function combine($val1, $val2): int
 }
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1176,6 +1390,8 @@ function combine(int $val1, int $val2): int
 }
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### حذف کد مرده
@@ -1183,6 +1399,8 @@ function combine(int $val1, int $val2): int
 کد مرده به همان اندازه ای که کد تکراری بد است نامناسب است. هیچ دلیلی وجود ندارد که آن را در کدهای خود نگه دارید. اگر کدی فراخوانی نمی شود، خلاص شوید!
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1201,7 +1419,11 @@ $request = newRequestModule($requestUrl);
 inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1215,6 +1437,8 @@ $request = requestModule($requestUrl);
 inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 
@@ -1223,6 +1447,8 @@ inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 ### استفاده از کپسوله سازی اشیا
 
 در PHP می توانید کلمات کلیدی `public`, `protected`, `privaten` داریم که با استفاده از آن ، می توانید دسترسی به ویژگی ها را روی یک اشیا کنترل کنید.
+
+</div>
 
 * When you want to do more beyond getting an object property, you don't have
 to look up and change every accessor in your codebase.
@@ -1235,7 +1461,11 @@ server.
 
 Additionally, this is part of [Open/Closed](#openclosed-principle-ocp) principle.
 
+<div dir="rtl">
+
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1251,7 +1481,11 @@ $bankAccount = new BankAccount();
 $bankAccount->balance -= 100;
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 class BankAccount
@@ -1292,6 +1526,8 @@ $bankAccount->withdraw($shoesPrice);
 $balance = $bankAccount->getBalance();
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ### اعضای اشیا را با protected, private تعریف کنید
@@ -1300,6 +1536,8 @@ $balance = $bankAccount->getBalance();
 
 
 **بد:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1319,7 +1557,11 @@ $employee = new Employee('John Doe');
 echo 'Employee name: ' . $employee->name;
 ```
 
+<div dir="rtl">
+
 **خوب:**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1344,6 +1586,8 @@ $employee = new Employee('John Doe');
 echo 'Employee name: ' . $employee->getName();
 ```
 
+<div dir="rtl">
+
 **[⬆ برگشت به بالا](#table-of-contents)**
 
 ## کلاس ها
@@ -1353,6 +1597,8 @@ echo 'Employee name: ' . $employee->getName();
 ابتدا بهتر است کمی در ارتباط با [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns)ها بخوانید.
 
 **بد**
+
+</div>
 
 ```php
 declare(strict_types=1);
@@ -1393,7 +1639,11 @@ class EmployeeTaxData extends Employee
 }
 ```
 
+<div dir="rtl">
+
 **خوب*
+
+</div>
 
 ```php
 declare(strict_types=1);
